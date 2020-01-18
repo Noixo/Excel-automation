@@ -7,10 +7,16 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
-Sub Auto_Open()
+'Global variables
+'Workbooks.Open (ThisWorkbook.Path & "\Croydon Blank Master Monthly Stats V283") 'change to monthly doc
+'Set EOD = ActiveWorkbook
+
+
+Sub main()
 'runs when excel doc is opened.
 eraseData   'clear past weeks data if monday
 
+updateData
 Send_mail   'append file to email
 
 ActiveWorkbook.Save
@@ -20,7 +26,8 @@ End Sub
 Sub eraseData()
 
     If Weekday(Date, vbMonday) = 1 Then
-    Worksheets("Sheet1").Range("A1:C10").Clear  'change with the actual range
+        Worksheets("Sheet1").Range("C4:D10").Value = ""  'Replace value with empty
+        Worksheets("Sheet1").Range("G4:K10").Value = ""
     End If
     
 End Sub
@@ -32,60 +39,61 @@ Sub updateData()    'grab budget information and friedman
     Dim Monthly As Workbook
     
     Dim dayOffset As Integer
-    Dim Budget As Double, Total As Double, LPT As Double, AVG As Double
+    Dim Budget As String, Total As String, LPT As Double, AVG As Double, Trans As Integer
+    Dim offset As Integer
+    
+    offset = 0
     
     dayOffset = Weekday(Date, vbMonday)   ' 1 = monday
     
     Set EOD = ActiveWorkbook
     
-    Workbooks.Open Filename:="C:\\Book.xls" 'change to monthly doc
+    Workbooks.Open (ThisWorkbook.Path & "\Croydon Blank Master Monthly Stats V283") 'change to monthly doc
     Set Monthly = ActiveWorkbook
-    Worksheets("Sheet1").Select ' change to budget panel
     
-    Budget = Range("A1")
+    Budget = Monthly.Worksheets("Daily Sales Budgets").Range("L26").Value   'Store Budget goal
     
-    Worksheets("Sheet2").Select ' change to monthly stats
-    
-    
-    'grab total. LPT and AVG data
-    
-    ActiveWorkbook.Close
-    EOD.Activate 'change back to EOD doc
-    
-    'bad code
-    
-    ActiveCell.Offset(1, (1 + dayOffset)).Select
-    ActiveCell.Value = Budget
-    
-    ActiveCell.Offset(1, (1 + dayOffset)).Select
-    ActiveCell.Value = Total
-    
-    ActiveCell.Offset(1, (1 + dayOffset)).Select
-    ActiveCell.Value = LPT
-    
-    ActiveCell.Offset(1, (1 + dayOffset)).Select
-    ActiveCell.Value = AVG
-    
-    'paste information in correct dates
+    Total = Monthly.Worksheets("Daily & Weekly Totals").Range("G5").Value
+    AVG = Monthly.Worksheets("Daily & Weekly Totals").Range("O5").Value
+    LPT = Monthly.Worksheets("Daily & Weekly Totals").Range("J5").Value
+    Trans = Monthly.Worksheets("Daily & Weekly Totals").Range("I5").Value
+
+    'Start at 3 as Monday counts as 1, and values start at 4 therefore 3+1 = 4
+    Cells(3 + dayOffset + offset, 3).Value = Total
+    Cells(3 + dayOffset + offset, 8).Value = AVG
+    Cells(3 + dayOffset + offset, 9).Value = LPT
+    Cells(3 + dayOffset + offset, 7).Value = Trans
     
     EOD.Save
 
 End Sub
 Sub Send_mail()
-    
     Dim OutApp As Object
     Dim OutMail As Object
     Set OutApp = CreateObject("Outlook.Application")
     Set OutMail = OutApp.CreateItem(0)
+    
+    Workbooks.Open Filename:="F:\Content creation\Programming\Jaycar EOD Excel automation\Area 2 Daily EOD reporting IMPROVED.xlsm"
+    Set EOD = ActiveWorkbook
+    
+    'DUPLICATE WORKBOOK OPENING
+    Workbooks.Open Filename:="F:\Content creation\Programming\Jaycar EOD Excel automation\Croydon Blank Master Monthly Stats V283" 'change to monthly doc
+    Set Monthly = ActiveWorkbook
+    
     With OutMail
-        '.to = "test@test.com"
-        .Subject = "EOD report " & Date
+        .to = Replace(Monthly.Worksheets("Store Details").Range("D11").Value, " ", "") & "@jaycar.com.au"
+        .Subject = "EOD report " & Monthly.Worksheets("Store Details").Range("D2").Value & " " & Date
         .cc = ""
-        '.Body = ""
-        .Attachments.Add ActiveWorkbook.FullName
+        .Body = ""
+        
+        .Attachments.Add EOD.FullName
         .Display
     End With
     Set OutMail = Nothing
     Set OutApp = Nothing
 End Sub
 ' separate excel for area manager/cc
+
+Private Sub CommandButton1_Click()
+    main
+End Sub
