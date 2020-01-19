@@ -1,0 +1,7 @@
+20/01/2020:
+-	Send_mail will generate the email address of the area manager from first name and last name
+-	updateData now correctly jumps the gaps in "Daily & Weekly Totals"
+-	Added error handling on AVG in updateData
+-	Defined constants
+-	Send_mail will auto save and attach the Monthly document at the end of the month
+-	Program will automatically change the month of Monthly stats document when new month occurs
