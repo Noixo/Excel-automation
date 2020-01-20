@@ -5,3 +5,7 @@
 -	Defined constants
 -	Send_mail will auto save and attach the Monthly document at the end of the month
 -	Program will automatically change the month of Monthly stats document when new month occurs
+-	program now accounts for the start of week of the month potentially being from the month prior
+21/01/2020:
+-	 Split up code into modules
+-	Moved code into separate excel sheet

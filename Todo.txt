@@ -2,3 +2,4 @@
 -	upload EOD document to email as a standard excel file
 -	Auto fill friedman
 -	Auto save and move monthly report at new month and create and save new blank
+- 	change monthly to read only
