@@ -11,3 +11,7 @@
 -	Moved code into separate excel sheet
 -	Email will select between default and user written messages
 -	Added protection to main document
+-	Can check if a new month has started and auto move, current document to archives, create new blank
+	document, and set it up with correct month and year
+22/01/2020:
+-	Added rudimentary backup and delete system for past 7 days
