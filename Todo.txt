@@ -1,5 +1,6 @@
 -	accomodate how friedman works by week start not first day of the month
 -	upload EOD document to email as a standard excel file
 -	Auto fill friedman
--	Auto save and move monthly report at new month and create and save new blank
-- 	change monthly to read only
+-	Make sure Monthly document gets the right name aka archive name when being sent to AM
+-	copy over budgets with new monthly document
+-	Add alert if version changes

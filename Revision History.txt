@@ -15,3 +15,7 @@
 	document, and set it up with correct month and year
 22/01/2020:
 -	Added rudimentary backup and delete system for past 7 days
+23/01/2020:
+-	Code opens salesperson document and pulls data from it
+-	rudimentary add to friedman
+-	CODE IS BROKEN
