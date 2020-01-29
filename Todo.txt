@@ -1,6 +1,15 @@
--	accomodate how friedman works by week start not first day of the month
--	upload EOD document to email as a standard excel file
 -	Auto fill friedman
 -	Make sure Monthly document gets the right name aka archive name when being sent to AM
 -	copy over budgets with new monthly document
 -	Add alert if version changes
+
+-	Debug statements
+-	Message stating when a file does not exist
+
+BUGS:
+-	offset breaks after x days
+-	Reverse array
+-	Ensure array maps to correct names
+-	Fix outlook not opening on work PC
+-	RANGE(16,N) & (29,R) is not dollar FIX IN BLANK
+-	Friedman doesn't copy previous month data

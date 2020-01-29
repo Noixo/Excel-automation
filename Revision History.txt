@@ -19,3 +19,5 @@
 -	Code opens salesperson document and pulls data from it
 -	rudimentary add to friedman
 -	CODE IS BROKEN
+30/01/2020:
+-	Code now correctly tells the right day for putting data in Friedman/pulling from Daily & Weekly Totals
