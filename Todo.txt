@@ -13,3 +13,5 @@ BUGS:
 -	Fix outlook not opening on work PC
 -	RANGE(16,N) & (29,R) is not dollar FIX IN BLANK
 -	Friedman doesn't copy previous month data
+-	Force overwrite certain files
+-	Save files and close ones not in use
