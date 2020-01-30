@@ -5,13 +5,14 @@
 
 -	Debug statements
 -	Message stating when a file does not exist
+-	Pull customer number from website
 
 BUGS:
--	offset breaks after x days
--	Reverse array
--	Ensure array maps to correct names
 -	Fix outlook not opening on work PC
 -	RANGE(16,N) & (29,R) is not dollar FIX IN BLANK
 -	Friedman doesn't copy previous month data
 -	Force overwrite certain files
 -	Save files and close ones not in use
+
+-	Other store refunds/other casuals
+-	Verify amount at bottom of sales is correct

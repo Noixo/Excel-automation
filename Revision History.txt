@@ -22,3 +22,9 @@
 30/01/2020:
 -	Code now correctly tells the right day for putting data in Friedman/pulling from Daily & Weekly Totals
 -	Code now almost correctly processes data and enters it into Friedman
+31/01/2020:
+-	Globalised file opening code
+-	Fixed bug where Monthly & salesperson data wouldn't be added to email
+-	uploadFriedman now correctly uploads data in the right orientation
+-	Fixed bug where LPT in EOD was being given wrong information
+-	Program checks if a Nerd Perks value was entered prior to being run. Halting execution if user wish
