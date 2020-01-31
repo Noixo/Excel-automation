@@ -16,3 +16,4 @@ BUGS:
 
 -	Other store refunds/other casuals
 -	Alert if link to website hasn't been entered?
+-	Fill in non-todays date

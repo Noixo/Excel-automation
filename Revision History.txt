@@ -31,3 +31,5 @@
 -	Added code to prevent user error ie checking Nerds/door/salesperson date has been entered/is correct
 -	Added data verification
 -	Changed sales values to be rounded to 2 decimal places
+-	Added only update EOD button
+-	Added code to account for other store refunds/staff not on roster
