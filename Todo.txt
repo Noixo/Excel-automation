@@ -15,4 +15,4 @@ BUGS:
 -	Save files and close ones not in use
 
 -	Other store refunds/other casuals
--	Verify amount at bottom of sales is correct
+-	Alert if link to website hasn't been entered?

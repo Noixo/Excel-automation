@@ -28,3 +28,6 @@
 -	uploadFriedman now correctly uploads data in the right orientation
 -	Fixed bug where LPT in EOD was being given wrong information
 -	Program checks if a Nerd Perks value was entered prior to being run. Halting execution if user wish
+-	Added code to prevent user error ie checking Nerds/door/salesperson date has been entered/is correct
+-	Added data verification
+-	Changed sales values to be rounded to 2 decimal places
