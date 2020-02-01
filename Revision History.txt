@@ -37,3 +37,4 @@
 -	Fixed bug with opening workbooks
 -	Added Nerd Perks slot in autoFill
 -	Added images to Documentation
+-	Changed how door count is added

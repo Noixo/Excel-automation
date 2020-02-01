@@ -1,20 +1,13 @@
--	Auto fill friedman
--	Make sure Monthly document gets the right name aka archive name when being sent to AM
--	copy over budgets with new monthly document
 -	Add alert if version changes
-
 -	Debug statements
 -	Message stating when a file does not exist
 -	Pull customer number from website
+-	Add jaycar signature to bottom of email
 
 BUGS:
--	Fix outlook not opening on work PC
--	RANGE(16,N) & (29,R) is not dollar FIX IN BLANK
 -	Friedman doesn't copy previous month data
--	Force overwrite certain files
 -	Save files and close ones not in use
 
--	Other store refunds/other casuals
 -	Alert if link to website hasn't been entered?
 -	Fill in non-todays date
 -	Backups 1 week before on closed days won't be deleted
