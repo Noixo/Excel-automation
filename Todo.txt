@@ -17,3 +17,5 @@ BUGS:
 -	Other store refunds/other casuals
 -	Alert if link to website hasn't been entered?
 -	Fill in non-todays date
+-	Backups 1 week before on closed days won't be deleted
+-	Monthly report being uploaded at end of month aren't deleted

@@ -33,3 +33,7 @@
 -	Changed sales values to be rounded to 2 decimal places
 -	Added only update EOD button
 -	Added code to account for other store refunds/staff not on roster
+01/02/2020:
+-	Fixed bug with opening workbooks
+-	Added Nerd Perks slot in autoFill
+-	Added images to Documentation
