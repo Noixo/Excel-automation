@@ -22,7 +22,7 @@
 30/01/2020:
 -	Code now correctly tells the right day for putting data in Friedman/pulling from Daily & Weekly Totals
 -	Code now almost correctly processes data and enters it into Friedman
-31/01/2020:
+31/01/2020:	V1.00
 -	Globalised file opening code
 -	Fixed bug where Monthly & salesperson data wouldn't be added to email
 -	uploadFriedman now correctly uploads data in the right orientation
@@ -33,8 +33,12 @@
 -	Changed sales values to be rounded to 2 decimal places
 -	Added only update EOD button
 -	Added code to account for other store refunds/staff not on roster
-01/02/2020:
+01/02/2020:	V1.01
 -	Fixed bug with opening workbooks
 -	Added Nerd Perks slot in autoFill
 -	Added images to Documentation
 -	Changed how door count is added
+02/02/2020:	V1.02
+-	Speed optimisations
+-	Files in "Backup" now deleted after 7 days
+-	End of month done
