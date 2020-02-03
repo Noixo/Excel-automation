@@ -42,3 +42,4 @@
 -	Speed optimisations
 -	Files in "Backup" now deleted after 7 days
 -	End of month done
+~DEPRECIATED BY VERSION CHANGES IN DOCUMENTATION~
