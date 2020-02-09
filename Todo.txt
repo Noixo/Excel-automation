@@ -1,14 +1,12 @@
 -	Add alert if version changes
 -	Debug statements
 -	Message stating when a file does not exist
--	Pull customer number from website
 -	Add jaycar signature to bottom of email
 
-BUGS:
 -	Friedman doesn't copy previous month data
 -	Save files and close ones not in use
-
--	Alert if link to website hasn't been entered?
 -	Fill in non-todays date
--	Backups 1 week before on closed days won't be deleted
--	Monthly report being uploaded at end of month aren't deleted
+-	Perform a test to make sure if a file doesn't exist, it notifies rather than crashes.
+-	clean up weekly monthly stat upload code
+-	Ensure that weekly monthly stat code is deleted every month
+-	make it an option to send ash weekly monthly email
