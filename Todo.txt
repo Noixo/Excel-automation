@@ -10,3 +10,4 @@
 -	clean up weekly monthly stat upload code
 -	Ensure that weekly monthly stat code is deleted every month
 -	make it an option to send ash weekly monthly email
+-	fix bug where at end of month, the store details start day doesn't copy over/change
