@@ -13,69 +13,51 @@ namespace SeleniumTest
     {
         static void Main(string[] args)
         {
-            Console.Write("test case started ");
-            //create the reference for the browser  
-            IWebDriver driver = new ChromeDriver();
             //driver.HideCommandPromptWindow = true;
-            // navigate to URL  
-            driver.Navigate().GoToUrl("https://l.vemcount.com/embed/pane/xIgeG9iTUypChTb");
-            Thread.Sleep(2000);
-            // identify the Google search text box  
-            //IWebElement ele = driver.FindElement(By.Name("q"));
-            //enter the value in the google search text box  
-            //ele.SendKeys("javatpoint tutorials");
-            //Thread.Sleep(2000);
-            //identify the google search button  
+            // navigate to URL  "https://l.vemcount.com/embed/pane/xIgeG9iTUypChTb"
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Arguments empty. Aborting program.");
+                System.Environment.Exit(1);
+            }
 
-            //IWebElement ele1 = driver.FindElement(By.ClassName("w-full"));
+            Console.WriteLine("Attempting to grab door count. ");
 
-            //driver.FindElement(By.XPath("//div[@class='w-full']/span[@class='']"));
-            //IWebElement kk = driver.FindElement(By.XPath("'.//*[@id='primary']/div[2]/div[1]/div[1]/span"))   // FindElement(By.CssSelector("div.w-full>span>b"));            // driver.FindElement(By.ClassName("w-full"));//('ytp-menu-label-secondary')
-            //kk = driver.FindElement(By.XPath("//span[@class='w-full']"));
+            //create the reference for the browser  
+            //IWebDriver driver = new ChromeDriver();
 
-             String kk = driver.FindElement(By.CssSelector("div.flex")).GetAttribute("innerHTML");
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--log-level=3");
+            //options.Proxy = null;
+            IWebDriver driver = new ChromeDriver(new ChromeOptions { Proxy = null });
 
-            //kk = getBetween(kk, "<span>", "</span>\r\n");   //return doorcount
+            //string driverPath = @"C:\where ever the driver it\";
+            //var chromeOptions = new ChromeOptions();
+            //chromeOptions.Proxy = null;
+            //IWebDriver browser = new ChromeDriver(driverPath, chromeOptions);
+
+
+            driver.Navigate().GoToUrl(args[0]);
+
+            Thread.Sleep(3000);
+
+            String kk = driver.FindElement(By.CssSelector("div.flex")).GetAttribute("innerHTML");
+
             int tmp = kk.IndexOf("<span>") + 6;
-            int tmpTwo = kk.IndexOf("</span>\r\n") - 11;
             int test = kk.IndexOf("</span>\r\n");
 
             kk = kk.Substring(tmp, test - tmp);
 
-            // tmp = kk.IndexOf('<');
+            StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "\\DoorCount.txt");
+            sw.WriteLine(kk);   //door count
+            //File.WriteAllLines(sw, );
+            //sw.WriteLine(1);   //door count recorded
+            Console.Write("Door Count: " + kk);
+            //Close the file
+            sw.Close();
 
-
-
-            //String kk = driver.FindElement(By.CssSelector("#w-full span.flex")).GetAttribute("innerHTML");
-
-            //IWebElement kk = driver.FindElement(By.XPath(".//div[@class='w-full']/span"));   //.GetAttribute("span");  //By.XPath("'.//*[@id='w-full']/div[2]/div[1]/div[1]/span"));
-
-            //System.out.println(HeaderTxtElem.getText());
-
-            //try
-            //{
-
-                //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() +  "DoorCount.txt");
-
-                //Write a line of text
-                sw.WriteLine(kk);
-
-                //Write a second line of text
-                //sw.WriteLine("From the StreamWriter class");
-
-                //Close the file
-                sw.Close();
-            //}
-      
-
-            //kk = driver.FindElement(By.CssSelector("div.flex")).GetAttribute("innerHTML");
-            // click on the Google search button  
-            // ele1.Click();
-            //Thread.Sleep(3000);
             //close the browser  
             driver.Quit();
-            //Console.Write("test case ended ");
         }
     }
 }
