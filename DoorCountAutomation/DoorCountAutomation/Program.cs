@@ -35,7 +35,8 @@ namespace SeleniumTest
 
         static void Main(string[] args)
         {
-            String kk = "";
+            String kk = "", newCount = "";
+            Boolean stable = false;
             Program p = new Program();
 
             //driver.HideCommandPromptWindow = true;
@@ -63,19 +64,47 @@ namespace SeleniumTest
 
             while (true)
             {
+                bool success = UInt32.TryParse(args[1], out uint timeWait);
+                if (DateTimeOffset.Now.Subtract(startTime).TotalMilliseconds > timeWait)
+                    throw new TimeoutException();
+
                 try
                 {
                     kk = driver.FindElement(By.CssSelector("div.flex")).GetAttribute("innerHTML");
                     if (kk != "")
                     {
-                        int tmp = kk.IndexOf("<span>") + 6;
-                        int test = kk.IndexOf("</span>\r\n");
+                        while (!stable)
+                        {
+                            kk = driver.FindElement(By.CssSelector("div.flex")).GetAttribute("innerHTML");
+                            int tmp = kk.IndexOf("<span>") + 6;
+                            int test = kk.IndexOf("</span>\r\n");
 
-                        kk = kk.Substring(tmp, test - tmp);
-                        p.doorCount(kk);
+                            kk = kk.Substring(tmp, test - tmp);
+
+                            newCount = kk;
+                            Thread.Sleep(600);
+
+                            kk = driver.FindElement(By.CssSelector("div.flex")).GetAttribute("innerHTML");
+                            tmp = kk.IndexOf("<span>") + 6;
+                            test = kk.IndexOf("</span>\r\n");
+
+                            kk = kk.Substring(tmp, test - tmp);
+
+                            if (kk == newCount)
+                            {
+                                p.doorCount(kk);
+                                driver.Quit();
+                                System.Environment.Exit(1);
+                            }
+                        }
+                        //if (kk == "0")
+                        //{
+                        //    Thread.Sleep(10000);
+                        //}
+                        //p.doorCount(kk);
                         //p.doorCount(kk);
                         //close the browser  
-                        driver.Quit();
+                        //driver.Quit();
                     }
                 }
                 catch (Exception)
@@ -83,10 +112,9 @@ namespace SeleniumTest
                     Console.Write("Cannot find door count.");
                     kk = "";
                     p.doorCount(kk);
+                    driver.Quit();
+                    System.Environment.Exit(1);
                 }
-
-                if (DateTimeOffset.Now.Subtract(startTime).TotalMilliseconds > 10000)
-                    throw new TimeoutException();
             }
 
             //Thread.Sleep(3500);
