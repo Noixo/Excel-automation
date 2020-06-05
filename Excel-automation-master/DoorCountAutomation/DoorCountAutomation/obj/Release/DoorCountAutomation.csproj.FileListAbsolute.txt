@@ -14,8 +14,8 @@ D:\Content creation\Programming\Jaycar EOD Excel automation\DoorCountAutomation\
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCount\DoorCountAutomation.exe.config
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCount\DoorCountAutomation.exe
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCount\DoorCountAutomation.pdb
-D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCountAutomation\DoorCountAutomation\obj\Release\DoorCountAutomation.csprojAssemblyReference.cache
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCountAutomation\DoorCountAutomation\obj\Release\DoorCountAutomation.csproj.CoreCompileInputs.cache
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCountAutomation\DoorCountAutomation\obj\Release\DoorCountAutomation.csproj.CopyComplete
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCountAutomation\DoorCountAutomation\obj\Release\DoorCountAutomation.exe
 D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCountAutomation\DoorCountAutomation\obj\Release\DoorCountAutomation.pdb
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\DoorCountAutomation\DoorCountAutomation\obj\Release\DoorCountAutomation.csprojAssemblyReference.cache
