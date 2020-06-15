@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using System.Diagnostics;
 using System.Timers;
+using System.Net;
 
 namespace SeleniumTest
 {
@@ -17,6 +18,13 @@ namespace SeleniumTest
 	{
 		private static System.Timers.Timer aTimer;
 		private static IWebDriver driver;
+
+		private static readonly Program p = new Program();
+
+		private void exitProgram()
+		{
+			System.Environment.Exit(1);
+		}
 		public void doorCount(String kk)
 		{
 			StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "\\DoorCount.txt");
@@ -36,17 +44,10 @@ namespace SeleniumTest
 			//Close the file
 			sw.Close();
 		}
-		
-		/*args[]
-		 * 0: URL
-		 * 1: overall timeout value
-		 * 2: wait value after website has been opened
-		*/
-		static void Main(string[] args)
+
+		public void openUsingSelenium(string url, int timeWaitToStable)
 		{
 			String kk = "", newCount = "";
-			//Boolean stable = false;
-			Program p = new Program();
 
 			//driver.HideCommandPromptWindow = true;
 			// navigate to URL  "https://l.vemcount.com/embed/pane/xIgeG9iTUypChTb" 'croydon
@@ -70,22 +71,8 @@ namespace SeleniumTest
 			//IWebDriver driver;
 			driver = new ChromeDriver(options);
 
-			if (args.Length == 0)
-			{
-				Console.WriteLine("Arguments empty. Aborting program.");
-				driver.Quit();
-				System.Environment.Exit(1);
-			} 
-
-			Console.WriteLine("Attempting to grab door count. ");
 			options.AddArgument("--log-level=3");
-			driver.Navigate().GoToUrl(args[0]);
-			UInt32.TryParse(args[1], out uint timeOutVal);
-			Int32.TryParse(args[2], out int timeWaitToStable);
-
-			SetTimer(timeOutVal);    //Set global time out timer in case something gets stuck		//40000
-
-			//Thread.Sleep(timeWaitToOpen); //Delay program start to make sure website opens 
+			driver.Navigate().GoToUrl(url);
 
 			while (true)
 			{
@@ -96,19 +83,81 @@ namespace SeleniumTest
 					kk = returnDoorCount();
 
 					newCount = kk;
-					Thread.Sleep(timeWaitToStable);	//1000 ideal
+					Thread.Sleep(timeWaitToStable); //1000 ideal
 
 					kk = returnDoorCount();
 
 					if (kk == newCount)
 					{
 						p.doorCount(kk);
-						//Console.WriteLine("Success");
-						//Debug.WriteLine("Success ", kk);
 						driver.Quit();
-						System.Environment.Exit(1);
+						p.exitProgram();
 					}
 				}
+			}
+
+		}
+
+		public void openUsingHTTP(string url)
+		{
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+			Stream resStream = response.GetResponseStream();
+
+			using (StreamReader reader = new StreamReader(resStream))
+			{
+				string contents = reader.ReadToEnd();
+				int startOffset = contents.IndexOf(":") + 1;    //+1 to grab first number element
+				int endOffset = contents.IndexOf(",");
+				contents = contents.Substring(startOffset, (endOffset - startOffset));
+
+				Console.WriteLine("DoorCount: {0}", contents);
+				p.doorCount(contents);
+				//string time = (localDate - DateTime.Now).ToString("ss");
+				//Console.WriteLine("time taken: {0}", time);
+			}
+		}
+		
+		/*args[]
+		 * 0: URL
+		 * 1: overall timeout value
+		 * 2: wait value after website has been opened
+		*/
+		static void Main(string[] args)
+		{
+			//Program p = new Program();
+			//DateTime localDate = DateTime.Now;
+			//String kk = "", newCount = "";
+
+			if (args.Length == 0)
+			{
+				Console.WriteLine("Arguments empty. Aborting program.");
+				p.exitProgram();
+			}
+
+
+			Console.WriteLine("Attempting to grab door count. ");
+
+			UInt32.TryParse(args[1], out uint timeOutVal);
+			Int32.TryParse(args[2], out int timeWaitToStable);
+
+			SetTimer(timeOutVal);    //Set global time out timer in case something gets stuck		//40000
+
+			//check which version to use
+			if (args[0].Contains("data"))	//if the url is for the json code, use HTTP request
+			{
+				p.openUsingHTTP(args[0]);
+			}
+			else if(args[0].Contains("pane"))  //if just the raw website link, open selenium
+			{
+				Console.WriteLine("warning: This might stop working if google chrome is updated. Using json version is more recommended");
+				p.openUsingSelenium(args[0], timeWaitToStable);
+			}
+			else
+			{
+				Console.WriteLine("ERROR: supplied web url not expected.");
+				p.doorCount("");
+				p.exitProgram();
 			}
 		}
 		private static string returnDoorCount()
@@ -137,8 +186,7 @@ namespace SeleniumTest
 			p.doorCount("");
 			aTimer.Stop();
 			aTimer.Dispose();
-			driver.Quit();
-			System.Environment.Exit(1);
+			p.exitProgram();
 		}
 	}
 }
