@@ -1,0 +1,11 @@
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\bin\Debug\Portable Autofill.exe.config
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\bin\Debug\Portable Autofill.exe
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\bin\Debug\Portable Autofill.pdb
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable_Autofill.Form1.resources
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable_Autofill.Properties.Resources.resources
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable Autofill.csproj.GenerateResource.cache
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable Autofill.csproj.CoreCompileInputs.cache
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable Autofill.exe
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable Autofill.pdb
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable Autofill.csprojAssemblyReference.cache
+D:\Content creation\Programming\Jaycar EOD Excel automation\Excel-automation-master\Portable Autofill\Portable Autofill\obj\Debug\Portable Autofill.csproj.ResolveComReference.cache
